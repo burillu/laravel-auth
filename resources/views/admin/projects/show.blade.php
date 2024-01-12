@@ -12,14 +12,19 @@
                         {{ $project->body }}
                     </pre>
                     <button class="btn btn-warning"> <a href="{{ route('admin.projects.edit', $project->id) }}"> <i
-                                class="fa-regular fa-pen-to-square text-white"></i></a></button><button
-                        class="btn btn-danger"> <a href="{{ route('admin.projects.destroy', $project->id) }}">
-                            <i class="fa-regular fa-trash-can text-white"></i></a></button>
+                                class="fa-regular fa-pen-to-square text-white"></i></a></button>
+                    <form action="{{ route('admin.projects.destroy', $project->id) }}" method="Post" class="d-flex">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger"><i
+                                class="fa-regular fa-trash-can text-white"></i></a></button>
+                    </form>
+                    <button class="btn btn-outline-dark"><a href="{{ route('admin.projects.create') }}"><i
+                                class="fa-sharp fa-solid fa-plus"></i>Add new Project</a></button>
                 </div>
             </div>
 
-            <button class="btn btn-outline-dark"><a href="{{ route('admin.projects.create') }}"><i
-                        class="fa-sharp fa-solid fa-plus"></i>Add new Project</a></button>
+
         </div>
     </section>
 @endsection
