@@ -11,7 +11,7 @@ class StoreProjectRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,10 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             //
+            "title" => "required | max:200 | unique:projects",
+            "image" => "nullable | url",
+            "body" => "nullable",
         ];
     }
+
 }

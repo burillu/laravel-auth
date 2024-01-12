@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -25,6 +26,7 @@ class ProjectController extends Controller
     public function create()
     {
         //
+        return view("admin.projects.create");
     }
 
     /**
@@ -33,6 +35,12 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         //
+        $form_data = $request->validated();
+        $form_data['user_id'] = auth()->id();
+        $form_data['slug'] = Str::slug($form_data['title'], "-");
+        $project = Project::create($form_data);
+
+        return to_route("admin.projects.show", $project->id);
     }
 
     /**
@@ -41,6 +49,7 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         //
+        return view("admin.projects.show", compact("project"));
     }
 
     /**
