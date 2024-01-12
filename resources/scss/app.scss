@@ -9,6 +9,10 @@ $fa-font-path: "../fonts/webfonts" !default;
 
 @import '~bootstrap/scss/bootstrap';
 
-h1 {
-    color: $text-color;
+img {
+    width: 100%;
+}
+
+pre {
+    white-space: pre-wrap;
 }

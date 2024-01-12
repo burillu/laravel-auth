@@ -58,6 +58,7 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         //
+        return view("admin.projects.edit", compact("project"));
     }
 
     /**
@@ -66,6 +67,11 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         //
+        $form_data = $request->validated();
+        $form_data["user_id"] = auth()->id();
+        $form_data["slug"] = Str::slug($form_data["title"], "-");
+        $project->update($form_data);
+        return to_route("admin.projects.show", $project->id);
     }
 
     /**

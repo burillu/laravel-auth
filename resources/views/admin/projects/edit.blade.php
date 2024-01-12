@@ -1,37 +1,42 @@
 @extends('layouts.app')
 @section('content')
-    <section class="container">
-        <h1>Projects:</h1>
-        <div class="container">
-            <table class="table table-hover mb-5">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Body</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($projects as $project)
-                        <tr>
-                            <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $project->title }}</td>
-                            <td>{{ substr($project->body, 0, 100) . '...' }}</td>
-                            <td><button class="btn btn-primary"> <a href="{{ route('admin.projects.show', $project->id) }}">
-                                        <i class="fa-sharp fa-regular fa-eye text-white"></i></a></button><button
-                                    class="btn btn-warning"> <a href="{{ route('admin.projects.edit', $project->id) }}"> <i
-                                            class="fa-regular fa-pen-to-square text-white"></i></a></button><button
-                                    class="btn btn-danger"> <a href="{{ route('admin.projects.destroy', $project->id) }}">
-                                        <i class="fa-regular fa-trash-can text-white"></i></a></button> </td>
-                        </tr>
-                    @endforeach
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <h2 class="text-center"> Edit Project:{{ $project->title }}</h2>
+                <form action="{{ route('admin.projects.update', $project->id) }}" method="POST">
+                    {{-- token --}}
+                    @csrf
+                    @method('PUT')
+                    <label for="title">Title:</label>
+                    <input id="title" value="{{ old('title', $project->title) }}" type="text" name="title"
+                        class="mb-3 form-control @error('title') is-invalid @enderror" required>
+                    @error('title')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                    <label for="image">Image:</label>
+                    <input id="image" value="{{ old('image', $project->image) }}" type="text" name="image"
+                        class="mb-3 form-control @error('image') is-invalid @enderror" required>
+                    @error('image')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                    <label for="body">Body:</label>
+                    <textarea id="body" type="text" name="body" class="mb-3 form-control @error('body') is-invalid @enderror">{{ old('body', $project->body) }}</textarea>
+                    @error('body')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
 
-                </tbody>
 
-            </table>
-            <button class="btn btn-outline-dark"><a href="{{ route('admin.projects.create') }}"><i
-                        class="fa-sharp fa-solid fa-plus"></i>Add new Project</a></button>
+                    <button type="submit" class="btn btn-success"><i class="fa-solid fa-plus"></i></button>
+                </form>
+            </div>
         </div>
-    </section>
+
+    </div>
 @endsection
