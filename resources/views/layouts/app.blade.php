@@ -156,8 +156,10 @@
                                         <div class="sidebar-top">
                                             <!-- home -->
                                             <div class=" my-btn p-2">
-                                                <i class="fa-solid fa-house"></i> <span class="px-1 d-none d-lg-inline">
-                                                    Home</span>
+                                                <a href="{{ route('admin.projects.index') }}">
+                                                    <i class="fa-solid fa-house"></i> <span
+                                                        class="px-1 d-none d-lg-inline">
+                                                        Home</span></a>
                                             </div>
                                             <!-- stats -->
                                             <div class="my-btn p-2">
@@ -191,7 +193,7 @@
                                     <div class="row py-2">
                                         <!-- nuovo studente -->
                                         <div class="col-12 col-md-4 col-lg order-md-last">
-                                            <span class="">Nuovo studente</span>
+                                            <span class="">Nuovo Progetto</span>
 
 
                                             <button class="btn btn-outline-light ms-2" type="button"
@@ -206,6 +208,7 @@
                                                     <button type="button" class="btn-close"
                                                         data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                                 </div>
+
                                                 <div class="offcanvas-body">
                                                     <form>
                                                         <div class="container-fluid">
@@ -414,122 +417,12 @@
                                 <div class="col-12 col-lg-10">
                                     <div class="card my-4">
                                         <div class="card-header fs-5">
-                                            Prossime Classi
+                                            Projects
                                         </div>
                                         <!-- tabella -->
-                                        {{-- <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th class="col-6 col-md-5 col-lg-4 col-xl-6" scope="col">Nome</th>
-                        <th class="d-none d-md-table-cell col ms-auto" scope="col">Data inizio</th>
-                        <th class="d-none d-md-table-cell col" scope="col">RDI</th>
-                        <th scope="col">Stato</th>
-                        <th class="col-auto" scope="col">Azioni</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <!-- first row -->
-                      <tr>
-                        <td class="col-6 col-md-5 col-lg-4 col-xl-6" scope="row"><span class=""> <img src="img/class-avatar.jpg" alt="class-avatar" class="my-img-avatar rounded-5 mx-1"> Classe 107</span></td>
-                        <td class="d-none d-md-table-cell col ms-auto">30 ago 2023</td>
-                        <td class="d-none d-md-table-cell col">20%</td>
-                        <td ><span class="badge text-bg-success">Done</span>
-                        </td>
-                        <td class="col-auto">
-                          <button class="btn btn-outline-dark"><i class="fa-solid fa-pencil"></i></button>
-                          <button class="btn btn-outline-dark"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                      </tr>
-                      <!-- second row -->
-                      <tr>
-                        <td class="col-6 col-md-5 col-lg-4 col-xl-6" scope="row"><span class=""> <img src="img/class-avatar.jpg" alt="class-avatar" class="my-img-avatar rounded-5 mx-1"> Classe 108</span></td>
-                        <td class="d-none d-md-table-cell col ms-auto">10 set 2023</td>
-                        <td class="d-none d-md-table-cell col">20%</td>
-                        <td ><span class="badge text-bg-success">Done</span>
-                        </td>
-                        <td class="col-auto">
-                          <button class="btn btn-outline-dark"><i class="fa-solid fa-pencil"></i></button>
-                          <button class="btn btn-outline-dark"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                      </tr>
-                      <!-- third row -->
-                      <tr>
-                        <td class="col-6 col-md-5 col-lg-4 col-xl-6" scope="row"><span class=""> <img src="img/class-avatar.jpg" alt="class-avatar" class="my-img-avatar rounded-5 mx-1"> Classe 109</span></td>
-                        <td class="d-none d-md-table-cell col ms-auto">15 set 2023</td>
-                        <td class="d-none d-md-table-cell col">20%</td>
-                        <td ><span class="badge text-bg-warning text-white">process</span>
-                        </td>
-                        <td class="col-auto">
-                          <button class="btn btn-outline-dark"><i class="fa-solid fa-pencil"></i></button>
-                          <button class="btn btn-outline-dark"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                      </tr>
-                      <!-- fourth row -->
-                      <tr>
-                        <td class="col-6 col-md-5 col-lg-4 col-xl-6" scope="row"><span class=""> <img src="img/class-avatar.jpg" alt="class-avatar" class="my-img-avatar rounded-5 mx-1"> Classe 110</span></td>
-                        <td class="d-none d-md-table-cell col ms-auto">22 set 2023</td>
-                        <td class="d-none d-md-table-cell col">20%</td>
-                        <td ><span class="badge text-bg-success">Done</span>
-                        </td>
-                        <td class="col-auto">
-                          <button class="btn btn-outline-dark"><i class="fa-solid fa-pencil"></i></button>
-                          <button class="btn btn-outline-dark"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                      </tr>
-                      <!-- fifth row -->
-                      <tr>
-                        <td class="col-6 col-md-5 col-lg-4 col-xl-6" scope="row"><span class=""> <img src="img/class-avatar.jpg" alt="class-avatar" class="my-img-avatar rounded-5 mx-1"> Classe 111</span></td>
-                        <td class="d-none d-md-table-cell col ms-auto">30 set 2023</td>
-                        <td class="d-none d-md-table-cell col">20%</td>
-                        <td ><span class="badge text-bg-danger">failed</span>
-                        </td>
-                        <td class="col-auto">
-                          <button class="btn btn-outline-dark"><i class="fa-solid fa-pencil"></i></button>
-                          <button class="btn btn-outline-dark"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                      </tr>
-                      <!-- sexth row -->
-                      <tr>
-                        <td class="col-6 col-md-5 col-lg-4 col-xl-6" scope="row"><span class=""> <img src="img/class-avatar.jpg" alt="class-avatar" class="my-img-avatar rounded-5 mx-1"> Classe 112</span></td>
-                        <td class="d-none d-md-table-cell col ms-auto">04 ott 2023</td>
-                        <td class="d-none d-md-table-cell col">20%</td>
-                        <td ><span class="badge text-bg-success">Done</span>
-                        </td>
-                        <td class="col-auto">
-                          <button class="btn btn-outline-dark"><i class="fa-solid fa-pencil"></i></button>
-                          <button class="btn btn-outline-dark"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                      </tr>
-                      <!-- seventh row -->
-                      <tr>
-                        <td class="col-6 col-md-5 col-lg-4 col-xl-6" scope="row"><span class=""> <img src="img/class-avatar.jpg" alt="class-avatar" class="my-img-avatar rounded-5 mx-1"> Classe 113</span></td>
-                        <td class="d-none d-md-table-cell col ms-auto">10 ott 2023</td>
-                        <td class="d-none d-md-table-cell col">20%</td>
-                        <td ><span class="badge text-bg-danger">failed</span>
-                        </td>
-                        <td class="col-auto">
-                          <button class="btn btn-outline-dark"><i class="fa-solid fa-pencil"></i></button>
-                          <button class="btn btn-outline-dark"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                      </tr>
-                      <!-- eighth row -->
-                      <tr>
-                        <td class="col-6 col-md-5 col-lg-4 col-xl-6" scope="row"><span class=""> <img src="img/class-avatar.jpg" alt="class-avatar" class="my-img-avatar rounded-5 mx-1"> Classe 114</span></td>
-                        <td class="d-none d-md-table-cell col ms-auto">20 ott 2023</td>
-                        <td class="d-none d-md-table-cell col">20%</td>
-                        <td ><span class="badge text-bg-success">Done</span>
-                        </td>
-                        <td class="col-auto">
-                          <button class="btn btn-outline-dark"><i class="fa-solid fa-pencil"></i></button>
-                          <button class="btn btn-outline-dark"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                      </tr>
-                      
-                      
-                    </tbody>
-                  </table> --}}
                                         @yield('content')
                                     </div>
+
                                     <div class="card my-4">
                                         <div class="card-header fs-5">
                                             F.A.Q.
@@ -613,7 +506,8 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="card">
-                                                <img src="img/stats.jpeg" class="card-img-top" alt="stats">
+                                                <img src="https://cdn.statcdn.com/Statistic/1400000/1400547-blank-754.png"
+                                                    class="card-img-top" alt="stats">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Utenti attivi</h5>
                                                     <p class="card-text">Lista degli utenti attivi in piattaforma
@@ -642,11 +536,6 @@
                 </div>
             </main>
         </div>
-
-        <main class="">
-
-        </main>
-
 </body>
 
 </html>
