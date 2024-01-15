@@ -11,9 +11,9 @@
                     <pre class="mb-5">
                         {{ $project->body }}
                     </pre>
-                    <button class="btn btn-warning"> <a href="{{ route('admin.projects.edit', $project->id) }}"> <i
+                    <button class="btn btn-warning"> <a href="{{ route('admin.projects.edit', $project->slug) }}"> <i
                                 class="fa-regular fa-pen-to-square text-white"></i></a></button>
-                    <form action="{{ route('admin.projects.destroy', $project->id) }}" method="Post" class="d-flex">
+                    <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="Post" class="d-flex">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger"><i

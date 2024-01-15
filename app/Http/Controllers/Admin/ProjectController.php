@@ -45,7 +45,7 @@ class ProjectController extends Controller
         }
         $project = Project::create($form_data);
 
-        return to_route("admin.projects.show", $project->id);
+        return to_route("admin.projects.show", $project->slug);
     }
 
     /**
@@ -85,9 +85,11 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         //se il progetto contiene un immagine, alla cancellazione bisogna procedere anche alla cancellazione della stessa
-        // if ()
+        if ($project->image) {
+            Storage::delete($project->image);
+        }
         $project->delete();
 
-        return to_route("admin.projects.index")->with('message', "The Project title : $project->id has been removed");
+        return to_route("admin.projects.index")->with('message', "The Project title : $project->title has been removed");
     }
 }
