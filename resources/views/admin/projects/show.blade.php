@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row mb-5">
                 <div class="col-12 col-md-6">
-                    <img src="{{ $project->image }}" alt="{{ $project->title }}">
+                    <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}">
                 </div>
                 <div class="col-12 col-md-6">
                     <pre class="mb-5">

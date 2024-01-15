@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -38,6 +39,10 @@ class ProjectController extends Controller
         $form_data = $request->validated();
         $form_data['user_id'] = auth()->id();
         $form_data['slug'] = Str::slug($form_data['title'], "-");
+        if ($request->hasFile('image')) {
+            $path = Storage::put('images', $request->image);
+            $form_data['image'] = $path;
+        }
         $project = Project::create($form_data);
 
         return to_route("admin.projects.show", $project->id);
@@ -79,8 +84,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        //se il progetto contiene un immagine, alla cancellazione bisogna procedere anche alla cancellazione della stessa
+        // if ()
         $project->delete();
+
         return to_route("admin.projects.index")->with('message', "The Project title : $project->id has been removed");
     }
 }

@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-8">
                 <h2 class="text-center"> Edit Project:{{ $project->title }}</h2>
-                <form action="{{ route('admin.projects.update', $project->id) }}" method="POST">
+                <form action="{{ route('admin.projects.update', $project->id) }}" method="POST" enctype="multipart/form-data">
                     {{-- token --}}
                     @csrf
                     @method('PUT')
@@ -17,7 +17,7 @@
                         </div>
                     @enderror
                     <label for="image">Image:</label>
-                    <input id="image" value="{{ old('image', $project->image) }}" type="text" name="image"
+                    <input id="image" value="{{ old('image', $project->image) }}" type="file" name="image"
                         class="mb-3 form-control @error('image') is-invalid @enderror" required>
                     @error('image')
                         <div class="invalid-feedback">

@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-8">
                 <h2 class="text-center"> Add new Project:</h2>
-                <form action="{{ route('admin.projects.store') }}" method="POST">
+                <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
                     {{-- token --}}
                     @csrf
                     <label for="title">Title:</label>
@@ -16,8 +16,9 @@
                         </div>
                     @enderror
                     <label for="image">Image:</label>
-                    <input id="image" value="{{ old('image') }}" type="text" name="image"
+                    <input id="image" value="{{ old('image') }}" type="file" name="image"
                         class="mb-3 form-control @error('image') is-invalid @enderror" required>
+                    <img src="https://placehold.jp/250x180.png" id="imagePreview" alt="placeholderImg">
                     @error('image')
                         <div class="invalid-feedback">
                             {{ $message }}
