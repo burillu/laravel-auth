@@ -202,3 +202,11 @@ Route::fallback(function() {
 });
 
 ```
+aprire il file
+filesistems.php nella cartella config
+
+aprire env
+
+controllare filesistem disk sia a public
+
+php artisan storage:link
